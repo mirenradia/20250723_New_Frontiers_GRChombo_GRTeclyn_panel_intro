@@ -7,7 +7,11 @@ format:
     embed-resources: true
     transition: slide
     logo: https://events.linuxfoundation.org/wp-content/uploads/2024/12/HPSF_Conference_2025_Logo_Horizontal_Black.svg
+    footer-logo-link: "https://events.linuxfoundation.org/hpsf-conference/"
+    sc-sb-title: true
     openButton: false
+filters:
+ - reveal-header
 
 authors:
  - name: Miren Radia
