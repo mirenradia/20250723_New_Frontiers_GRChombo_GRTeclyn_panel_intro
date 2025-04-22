@@ -20,4 +20,32 @@ authors:
      - name: University of Cambridge
 
 ---
-# Introduction
+# Introduction {background-color="#40666e"}
+
+## Who are we?
+
+## What is Numerical Relativity (NR)?
+
+## Common methods
+
+## Other NR codes
+
+# GRTeclyn {background-color="#40666e"}
+
+## The GRTeclyn code
+
+## Recent development
+
+# MHDueT {background-color="#40666e"}
+
+## The MHDueT code
+
+## Recent development
+
+# Future work {background-color="#40666e"}
+
+## Particles
+
+## UKNR CCP Benchmarking
+
+# Any questions? {background-color="#40666e"}
