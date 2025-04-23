@@ -24,11 +24,105 @@ authors:
 
 ## Who are we?
 
-## What is Numerical Relativity (NR)?
 
-## Common methods
 
-## Other NR codes
+## What is Numerical Relativity (NR)? {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Numerical Relativity is an area of research that uses numerical methods to
+  find and investigate solution to Einstein's equation of General
+  Relativity (and other modified theories of gravity),
+
+  $$ \underbrace{G_{ab}}_{\text{curvature}} +
+    \underbrace{\Lambda g_{ab}}_{\text{cosmological constant}} =
+    \underbrace{8\pi T_{ab}}_{\text{energy-momentum tensor}}. $$
+
+* We recast the equations into a set of coupled non-linear hyperbolic PDEs with
+  elliptic constraints that we solve for the initial data.
+
+* Common problems include compact object binaries (black holes, neutron stars,
+  more exotic objects) but NR is also used to study cosmological problems and
+  perform "numerical experiments" for fundamental physics.
+
+* We are often interested in the gravitational waves emitted in a simulation,
+  particularly in the astrophysical compact binary case.
+:::
+
+::: {.column width="50%"}
+
+:::
+
+::::
+
+## Common methods {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Discretization:
+  * **Finite differences**
+    * **Cell-centered**
+    * **Vertex/node-centered**
+  * Finite volume (for fluids)
+  * Spectral methods
+  * Discontinuous Galerkin (DG) methods
+* Finite-difference mesh refinement:
+  * **Block-structured AMR**
+    * "Moving boxes" for compact object binaries
+    * More adaptive for more exotic spacetimes
+  * Oct-tree AMR
+:::
+
+::: {.column width="50%"}
+* Method of lines
+  * **Fourth order Runge-Kutta time integration**
+  * **Fourth or sixth-order spatial discretization**
+* **Kreiss-Oliger dissipation**
+* Boundary conditions:
+  * **Outgoing radiation (Sommerfeld)**
+  * **Symmetric/reflective**
+  * **Extrapolating**
+:::
+
+::::
+## NR codes {.smaller}
+
+There are many NR codes/frameworks including (but by no means limited to):
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### [Pseudo-]spectral/DG codes
+* SpEC/SpECTRE
+* bamps
+* SFINGE
+
+### Oct-tree AMR
+* GRAthena++
+* Gmunu
+* Dendro-GR
+* GRAMSES
+:::
+
+::: {.column width="50%"}
+### Block-structured AMR
+* Cactus/Einstein Toolkit$^{\dagger}$
+  * McLachlan, LazEv, Maya, Lean, Canuda, ...
+* BAM
+* PAMR/AMRD libraries
+* Hahndol/PARAMESH
+* HAD
+* CosmoGRaPH
+* **Simflowny/MHDueT**$^{\dagger}$
+* GRChombo/**GRTeclyn**$^{\dagger}$
+:::
+
+::::
+
+${\dagger}$ denotes codes/frameworks that are either transitioning to or developing support
+for using AMReX.
 
 # GRTeclyn {background-color="#40666e"}
 
