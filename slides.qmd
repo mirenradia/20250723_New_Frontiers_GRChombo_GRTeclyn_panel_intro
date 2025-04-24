@@ -84,6 +84,7 @@ authors:
   * **Outgoing radiation (Sommerfeld)**
   * **Symmetric/reflective**
   * **Extrapolating**
+  * Multipatch approaches: separate (e.g. spherical) outer grids
 :::
 
 ::::
@@ -93,12 +94,7 @@ There are many NR codes/frameworks including (but by no means limited to):
 
 :::: {.columns}
 
-::: {.column width="50%"}
-### [Pseudo-]spectral/DG codes
-* SpEC/SpECTRE
-* bamps
-* SFINGE
-
+::: {.column width="30%"}
 ### Oct-tree AMR
 * GRAthena++
 * Gmunu
@@ -106,7 +102,17 @@ There are many NR codes/frameworks including (but by no means limited to):
 * GRAMSES
 :::
 
-::: {.column width="50%"}
+::: {.column width="30%"}
+### [Pseudo-]spectral/DG codes
+* SpEC/SpECTRE
+* bamps
+* SFINGE
+
+### Other
+* SENR/NRPy+
+:::
+
+::: {.column width="40%"}
 ### Block-structured AMR
 * Cactus/Einstein Toolkit$^{\dagger}$
   * McLachlan, LazEv, Maya, Lean, Canuda, ...
@@ -121,14 +127,56 @@ There are many NR codes/frameworks including (but by no means limited to):
 
 ::::
 
-${\dagger}$ denotes codes/frameworks that are either transitioning to or developing support
-for using AMReX.
+${\dagger}$ denotes codes/frameworks that are either transitioning to or
+developing support for using AMReX.
 
 # GRTeclyn {background-color="#40666e"}
 
-## The GRTeclyn code
+## The GRTeclyn code {.smaller}
 
-## Recent development
+:::: {.columns}
+
+::: {.column width="50%"}
+* GRTeclyn is an in-development port of GRChombo (previously built on the Chombo
+  libraries) to AMReX.
+* "Teclyn" is Welsh for "tool".
+* Features
+  * `Amr` based
+  * Cell-centered but finite-difference rather than finite-volume
+    * Fourth-order cell-centered interpolator from coarse to fine (`CellQuartic`)
+    * Fourth-order interpolation from fine to coarse
+  * Fourth-order Runge-Kutta time integration
+  * CCZ4 evolution equation (damped constraints violations) with
+    the moving puncture gauge condition
+  * Currently, just `BinaryBH` example which evolves black-hole binaries.
+
+:::
+
+::: {.column width="50%"}
+
+:::
+
+::::
+
+## Recent development {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Tracking of the black-hole punctures
+  * Uses AMReX's particle infrastructure
+  * Typically 2 BHs so just 2 puncture particles so maybe overkill
+  * Good experience for future particle use
+* AMD MI300A hackathon
+
+* Currently working on adding support for matter.
+:::
+
+::: {.column width="50%"}
+
+:::
+
+::::
 
 # MHDueT {background-color="#40666e"}
 
