@@ -136,7 +136,7 @@ developing support for using AMReX.
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 * GRTeclyn is an in-development port of GRChombo (previously built on the Chombo
   libraries) to AMReX.
 * "Teclyn" is Welsh for "tool".
@@ -146,7 +146,7 @@ developing support for using AMReX.
     * Fourth-order cell-centered interpolator from coarse to fine (`CellQuartic`)
     * Fourth-order interpolation from fine to coarse
   * Fourth-order Runge-Kutta time integration
-  * CCZ4 evolution equation (damped constraints violations) with
+  * CCZ4 evolution equations (damped constraints violations) with
     the moving puncture gauge condition
   * Currently, just `BinaryBH` example which evolves black-hole binaries.
 
@@ -163,13 +163,17 @@ developing support for using AMReX.
 :::: {.columns}
 
 ::: {.column width="50%"}
-* Tracking of the black-hole punctures
+* Black-hole puncture tracking.
+  * Allows us to track the "centres" of black hole during the simulation
   * Uses AMReX's particle infrastructure
   * Typically 2 BHs so just 2 puncture particles so maybe overkill
   * Good experience for future particle use
 * AMD MI300A hackathon
-
-* Currently working on adding support for matter.
+  * Lots of variables so high register pressure in RHS kernels
+  * Legacy complicated data structure from GRChombo increases this
+  * Refactoring led to a ~2x speedup in RHS kernels (~40% overall) on AMD MI300A
+    APUs.
+* Currently working on adding support for basic matter.
 :::
 
 ::: {.column width="50%"}
@@ -180,9 +184,41 @@ developing support for using AMReX.
 
 # MHDueT {background-color="#40666e"}
 
-## The MHDueT code
+## The MHDueT code {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+* MHDueT is a code that is automatically generated using the Simflowny
+  infrastructure.
+* Previously used the SAMRAI library.
+* Features
+  * `AmrCore` based.
+  * Mostly node-centered
+    * Fifth order polynomial interpolation from coarse to fine
+  * Custom fourth order Runga-Kutta time integration
+  * Supports Magnetohydrodynamics (MHD)
+    * High resolution shock capturing with WENO reconstruction
+    * Arbitrary EOS via HDF5 tabulated input
+  * CCZ4 evolution equations with moving puncture gauge conditions
+  * Can simulate binaries of boson stars, neutron stars, black holes
+    and more.
+:::
+
+::: {.column width="50%"}
+
+:::
+
+::::
 
 ## Recent development
+
+* Addition of nodal syncing when filling boundary nodes to prevent instability
+  (only appeared on GPUs)
+* Refactoring of custom higher-order extrapolating BCs to speed up these loops
+  ~3000x on Nvidia A100 GPUs
+* Reimplementation of reduction calculation to use AMReX functions rather than
+  a custom version ported from SAMRAI (which had several issues)
 
 # Future work {background-color="#40666e"}
 
