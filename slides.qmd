@@ -46,8 +46,8 @@ authors:
   more exotic objects) but NR is also used to study cosmological problems and
   perform "numerical experiments" for fundamental physics.
 
-* We are often interested in the gravitational waves emitted in a simulation,
-  particularly in the astrophysical compact binary case.
+* We are often interested in the gravitational waves (GWs) emitted in a
+  simulation, particularly in the astrophysical compact binary case.
 :::
 
 ::: {.column width="50%"}
@@ -146,9 +146,8 @@ developing support for using AMReX.
     * Fourth-order cell-centered interpolator from coarse to fine (`CellQuartic`)
     * Fourth-order interpolation from fine to coarse
   * Fourth-order Runge-Kutta time integration
-  * CCZ4 evolution equations (damped constraints violations) with
-    the moving puncture gauge condition
   * Currently, just `BinaryBH` example which evolves black-hole binaries.
+  * Designed to be flexible and easy to adapt to new problems.
 
 :::
 
@@ -200,9 +199,10 @@ developing support for using AMReX.
   * Supports Magnetohydrodynamics (MHD)
     * High resolution shock capturing with WENO reconstruction
     * Arbitrary EOS via HDF5 tabulated input
-  * CCZ4 evolution equations with moving puncture gauge conditions
   * Can simulate binaries of boson stars, neutron stars, black holes
     and more.
+  * Auto-generated using Simflowny infrastructure to allow minimal user
+    programming.
 :::
 
 ::: {.column width="50%"}
@@ -213,17 +213,46 @@ developing support for using AMReX.
 
 ## Recent development
 
-* Addition of nodal syncing when filling boundary nodes to prevent instability
-  (only appeared on GPUs)
+* Addition of nodal syncing when filling boundary nodes to prevent instabilities
+  (only appeared on GPUs).
 * Refactoring of custom higher-order extrapolating BCs to speed up these loops
-  ~3000x on Nvidia A100 GPUs
-* Reimplementation of reduction calculation to use AMReX functions rather than
-  a custom version ported from SAMRAI (which had several issues)
+  ~3000x on Nvidia A100 GPUs.
+* Reimplementation of reduction calculation to use AMReX `ParReduce` functions
+  rather than custom code ported from SAMRAI which did not work on GPUs, nor was
+  it thread-safe.
+* Dependency build scripts are now just Spack environments rather than a
+  collection of custom shell scripts.
 
 # Future work {background-color="#40666e"}
 
 ## Particles
 
-## UKNR CCP Benchmarking
+* Extend "diagnostic" particles in GRTeclyn to allow high-order interpolation of
+  state variables at arbitrary points in the domain for use with
+  * GW extraction on coordinate spheres
+  * Apparent horizon finding (~the boundary of black holes)
+  * Matter flux around coordinate spheres
+* Add physical particles in GRTeclyn to model collisionless dark matter
+  particles.
+* Add geodesic tracer particles to investigate behaviour around compact objects.
+* MHDueT already uses particles in their old SAMRAI version to model neutrino
+  transport in high-density, hot fluid matter.
+  * Port this feature to AMReX version.
+
+## UKNR Collaborative Computational Project
+
+* We have been awarded a grant to build a roadmap for the creation of a UK
+  Numerical Relativity Collaborative Computational Project/Community (CCP) as
+  part of the Computational Science Centre for Research Communities (CoSeC)
+  programme.
+* This would provide long-term funding for our scientific community including
+  shared cross-community code development.
+* As part of the technical branch of this grant we will:
+  * Benchmark the performance of existing NR codes in use by UK researchers,
+    and assess their readiness for future systems.
+  * Identify opportunities to make data formats more interoperable and allow
+    codes to share simulation/initial data.
+  * Investigate the possibility of developing common [analysis] tools for NR
+    codes.
 
 # Any questions? {background-color="#40666e"}
