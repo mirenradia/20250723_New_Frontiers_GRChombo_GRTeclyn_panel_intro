@@ -22,7 +22,66 @@ authors:
 ---
 # Introduction {background-color="#40666e"}
 
-## Who are we?
+## Who are we? {.smaller}
+
+* I am a Research Software Engineer (RSE) in Research Computing Services,
+  University of Cambridge.
+* Previously, I completed a PhD in numerical relativity.
+* I am involved with several numerical relativity codes/projects/collaborations:
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+### GRTeclyn
+
+::: {layout-nrow="2" style="text-align:center;"}
+![Katy Clough](media/katy.png){fig-align="left"}
+
+![Eugene Lim](media/eugene.png){fig-align="left"}
+
+![Juliana Kwan](media/juliana.png){fig-align="left"}
+
+![Paul Shellard](media/paul.png){fig-align="left"}
+
+![Pau Figueras](media/pau.png){fig-align="left"}
+
+![Ericka Florio](media/ericka.png){fig-align="left"}
+:::
+
+:::
+
+::: {.column width="20%"}
+
+### MHDueT
+
+::: {layout-nrow="2" style="text-align:center;"}
+![Miguel Bezares](media/miguel.png){height=130}
+
+![Carlos Palenzuela](media/carlos.jpg){height=130}
+:::
+
+:::
+
+::: {.column width="40%"}
+### UKNR CCP
+
+::: {layout-nrow="2" style="text-align:center;"}
+![Eugene Lim](media/eugene.png){fig-align="left"}
+
+![Katy Clough](media/katy.png){fig-align="left"}
+
+![Mark Hannam](media/mark.jpg){fig-align="left"}
+
+![Geraint Pratten](media/geraint.jpg){height=130}
+
+![Patricia Schmidt](media/patricia.jpg){height=130}
+
+:::
+
+:::
+
+::::
 
 
 
