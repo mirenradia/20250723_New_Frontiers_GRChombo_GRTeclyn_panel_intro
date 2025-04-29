@@ -159,33 +159,33 @@ There are many NR codes/frameworks including (but by no means limited to):
 
 ::: {.column width="30%"}
 ### Oct-tree AMR
-* GRAthena++
-* Gmunu
-* Dendro-GR
-* GRAMSES
+* [GR-Athena++](https://doi.org/10.3847/1538-4365/ac157b)
+* [Gmunu](https://doi.org/10.1093/mnras/stab2606)
+* [Dendro-GR](https://paralab.github.io/Dendro-GR/)
+* [GRAMSES](https://doi.org/10.1088/1475-7516/2020/01/007)
 :::
 
 ::: {.column width="30%"}
 ### [Pseudo-]spectral/DG codes
-* SpEC/SpECTRE
-* bamps
-* SFINGE
+* [SpEC](https://www.black-holes.org/for-researchers/spec)/[SpECTRE](https://spectre-code.org/)
+* [bamps](https://doi.org/10.1103/PhysRevD.93.063006)
+* [SFINGE](https://doi.org/10.1007/s10714-021-02865-5)
 
 ### Other
-* SENR/NRPy+
+* [SENR/NRPy+](https://nrpyplus.net/)
 :::
 
 ::: {.column width="40%"}
 ### Block-structured AMR
-* Cactus/Einstein Toolkit$^{\dagger}$
-  * McLachlan, LazEv, Maya, Lean, Canuda, ...
-* BAM
-* PAMR/AMRD libraries
-* Hahndol/PARAMESH
-* HAD
-* CosmoGRaPH
-* **Simflowny/MHDueT**$^{\dagger}$
-* GRChombo/**GRTeclyn**$^{\dagger}$
+* [Cactus](https://www.cactuscode.org/)/[Einstein Toolkit](https://www.einsteintoolkit.org/)$^{\dagger}$
+  * [McLachlan](https://www.cct.lsu.edu/~eschnett/McLachlan/), [LazEv](https://ccrg.rit.edu/content/software/lazev), [Maya](http://dx.doi.org/10.1088/0264-9381/24/12/S04), [Lean](http://dx.doi.org/10.1103/PhysRevD.76.104015), [Canuda](https://doi.org/10.5281/zenodo.3565474), ...
+* [BAM](https://doi.org/10.1103/PhysRevD.54.7361)
+* [PAMR/AMRD libraries](https://fpretori.scholar.princeton.edu/group-resources)
+* [Hahndol/PARAMESH](http://dx.doi.org/10.1103/PhysRevLett.96.111102)
+* [HAD](http://dx.doi.org/10.1088/0264-9381/23/22/025)
+* [CosmoGRaPH](https://cwru-pat.github.io/cosmograph/)
+* [Simflowny](https://bitbucket.org/iac3/simflowny/src/master/)/[**MHDueT**](http://mhduet.liu.edu/)$^{\dagger}$
+* [GRChombo](https://github.com/GRTLCollaboration/GRChombo)/[**GRTeclyn**](https://github.com/GRTLCollaboration/GRTeclyn)$^{\dagger}$
 :::
 
 ::::
