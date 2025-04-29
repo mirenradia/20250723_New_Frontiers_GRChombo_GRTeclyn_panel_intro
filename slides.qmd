@@ -199,7 +199,7 @@ developing support for using AMReX.
 
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="50%"}
 * GRTeclyn is an in-development port of GRChombo (previously built on the Chombo
   libraries) to AMReX.
 * "Teclyn" is Welsh for "tool".
@@ -215,7 +215,9 @@ developing support for using AMReX.
 :::
 
 ::: {.column width="50%"}
+{{< video media/grteclyn-grchombo-bbh-comparison.mp4 >}}
 
+![](media/grteclyn-benchmarks.svg)
 :::
 
 ::::
