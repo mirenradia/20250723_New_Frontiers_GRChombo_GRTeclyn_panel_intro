@@ -227,21 +227,25 @@ developing support for using AMReX.
 :::: {.columns}
 
 ::: {.column width="50%"}
-* Black-hole puncture tracking.
-  * Allows us to track the "centres" of black hole during the simulation
-  * Uses AMReX's particle infrastructure
-  * Typically 2 BHs so just 2 puncture particles so maybe overkill
-  * Good experience for future particle use
-* AMD MI300A hackathon
-  * Lots of variables so high register pressure in RHS kernels
-  * Legacy complicated data structure from GRChombo increases this
+* Black-hole puncture tracking:
+  * Allows us to track the "centers" of black hole during the simulation.
+  * Uses AMReX's particle infrastructure.
+  * Typically 2 BHs so just 2 puncture particles so maybe overkill.
+  * Good experience for future particle use.
+* AMD MI300A hackathon:
+  * Lots of variables so high register pressure in RHS kernels.
+  * Legacy complicated data structure from GRChombo increases this.
   * Refactoring led to a ~2x speedup in RHS kernels (~40% overall) on AMD MI300A
     APUs.
 * Currently working on adding support for basic matter.
 :::
 
 ::: {.column width="50%"}
+::: {style="text-align: center"}
+![](media/punctures.svg){height=320}
 
+![](media/mi300-hackathon-results.svg)
+:::
 :::
 
 ::::
