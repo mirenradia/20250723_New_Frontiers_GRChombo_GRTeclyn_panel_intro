@@ -270,12 +270,16 @@ developing support for using AMReX.
     * Arbitrary EOS via HDF5 tabulated input
   * Can simulate binaries of boson stars, neutron stars, black holes
     and more.
-  * Auto-generated using Simflowny infrastructure to allow minimal user
+  * Auto-generated using Simflowny infrastructure to enable minimal user
     programming.
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
+::: {style="text-align: center"}
+![](media/mhduet-logo.png){height=250}
 
+![](media/mhduet-jetformation.png)
+:::
 :::
 
 ::::
@@ -287,8 +291,8 @@ developing support for using AMReX.
 * Refactoring of custom higher-order extrapolating BCs to speed up these loops
   ~3000x on Nvidia A100 GPUs.
 * Reimplementation of reduction calculation to use AMReX `ParReduce` functions
-  rather than custom code ported from SAMRAI which did not work on GPUs, nor was
-  it thread-safe.
+  rather than custom code ported from SAMRAI which was neither GPU-offloaded
+  nor threaded/threadsafe.
 * Dependency build scripts are now just Spack environments rather than a
   collection of custom shell scripts.
 
