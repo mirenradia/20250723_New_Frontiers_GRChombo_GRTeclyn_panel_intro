@@ -10,6 +10,7 @@ format:
     footer-logo-link: "https://events.linuxfoundation.org/hpsf-conference/"
     sc-sb-title: true
     openButton: false
+    auto-play-media: true
 filters:
  - reveal-header
 
@@ -95,8 +96,8 @@ authors:
   Relativity (and other modified theories of gravity),
 
   $$ \underbrace{G_{ab}}_{\text{curvature}} +
-    \underbrace{\Lambda g_{ab}}_{\text{cosmological constant}} =
-    \underbrace{8\pi T_{ab}}_{\text{energy-momentum tensor}}. $$
+    \underbrace{\Lambda g_{ab}}_{\text{cosmological const.}} =
+    \underbrace{8\pi T_{ab}}_{\text{EM tensor}}. $$
 
 * We recast the equations into a set of coupled non-linear hyperbolic PDEs with
   elliptic constraints that we solve for the initial data.
@@ -111,6 +112,9 @@ authors:
 
 ::: {.column width="50%"}
 
+{{< video https://www.youtube.com/embed/mgr7W-5o1Og?si=eYS-YKclG015d0-Y width="480" height="270" start="15" >}}
+
+![](media/bbh-strain-plot.svg){.absolute bottom=7 left=525 width="480"}
 :::
 
 ::::
