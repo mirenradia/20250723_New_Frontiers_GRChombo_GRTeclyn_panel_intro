@@ -68,7 +68,7 @@ authors:
 :::
 
 ::: {.column width="40%"}
-### UKNR CCP
+### [UKNR](http://www.uknumericalrelativity.org/) CCP
 
 ::: {layout-nrow="2" style="text-align:center;"}
 ![Eugene Lim](media/eugene.png){fig-align="left"}
@@ -317,10 +317,12 @@ developing support for using AMReX.
 
 ## UKNR Collaborative Computational Project
 
-* We have been awarded a grant to build a roadmap for the creation of a UK
-  Numerical Relativity Collaborative Computational Project/Community (CCP) as
-  part of the Computational Science Centre for Research Communities (CoSeC)
-  programme.
+* We have been awarded a grant to build a roadmap for the creation of a [UK
+  Numerical Relativity](http://www.uknumericalrelativity.org/)
+  [Collaborative Computational Project/Community
+  (CCP)](https://www.uknumericalrelativity.org/uknr-ccp-development) as
+  part of the [Computational Science Centre for Research Communities
+  (CoSeC)](https://www.cosec.ac.uk/) programme.
 * This would provide long-term funding for our scientific community including
   shared cross-community code development.
 * As part of the technical branch of this grant we will:
