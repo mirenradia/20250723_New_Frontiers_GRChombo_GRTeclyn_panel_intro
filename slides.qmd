@@ -6,11 +6,14 @@ format:
   clean-revealjs:
     embed-resources: false
     transition: slide
+    header-logo: media/cosec-stfc-header-logo.png
+    header-logo-link: https://www.cosec.ac.uk/
     logo: https://events.linuxfoundation.org/wp-content/uploads/2024/12/HPSF_Conference_2025_Logo_Horizontal_Black.svg
     footer-logo-link: "https://events.linuxfoundation.org/hpsf-conference/"
     sc-sb-title: true
-    openButton: false
     auto-play-media: true
+    menu:
+      openButton: false
 filters:
  - reveal-header
 
@@ -329,3 +332,7 @@ developing support for using AMReX.
     codes.
 
 # Any questions? {background-color="#40666e"}
+
+::: header
+
+:::
