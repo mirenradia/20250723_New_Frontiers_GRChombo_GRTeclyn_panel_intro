@@ -4,7 +4,7 @@ subtitle: "AMReX Community Breakout, HPSF Conference 2025"
 date: "2025-05-07"
 format:
   clean-revealjs:
-    embed-resources: true
+    embed-resources: false
     transition: slide
     logo: https://events.linuxfoundation.org/wp-content/uploads/2024/12/HPSF_Conference_2025_Logo_Horizontal_Black.svg
     footer-logo-link: "https://events.linuxfoundation.org/hpsf-conference/"
