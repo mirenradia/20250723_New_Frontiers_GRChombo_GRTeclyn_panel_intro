@@ -14,6 +14,12 @@ format:
     auto-play-media: true
     menu:
       openButton: false
+title-slide-attributes:
+  data-background-image: media/nr-amrex-fade.png
+  data-background-opacity: 80%
+  data-background-position: right
+  data-background-size: contain
+
 filters:
  - reveal-header
 
@@ -24,7 +30,9 @@ authors:
      - name: University of Cambridge
 
 ---
-# Introduction {background-color="#40666e"}
+# Introduction {background-color="#40666e"
+  background-image="media/nr-amrex-fade.png" background-size="contain"
+  background-position="right"}
 
 ## Who are we? {.smaller}
 
@@ -117,7 +125,9 @@ authors:
 
 {{< video https://www.youtube.com/embed/mgr7W-5o1Og?si=eYS-YKclG015d0-Y width="480" height="270" start="15" >}}
 
-![](media/bbh-strain-plot.svg){.absolute bottom=7 left=525 width="480"}
+![A plot showing a mode of the strain (spacetime distortion) calculated from a
+  binary black-hole simulation](media/bbh-strain-plot.svg){.absolute bottom=7
+  left=525 width="480"}\
 :::
 
 ::::
@@ -196,7 +206,9 @@ There are many NR codes/frameworks including (but by no means limited to):
 ${\dagger}$ denotes codes/frameworks that are either transitioning to or
 developing support for using AMReX.
 
-# GRTeclyn {background-color="#40666e"}
+# GRTeclyn {background-color="#40666e"
+  background-image="media/nr-amrex-fade.png" background-size="contain"
+  background-position="right"}
 
 ## The GRTeclyn code {.smaller}
 
@@ -220,7 +232,11 @@ developing support for using AMReX.
 ::: {.column width="50%"}
 {{< video media/grteclyn-grchombo-bbh-comparison.mp4 >}}
 
-![](media/grteclyn-benchmarks.svg)
+![A bar chart showing the mean walltime taken to evolve a single timestep on
+  various different GPUs and a CPU. The results are as follows: Intel Xeon
+  Platinum 8480 CPU (480s), Nvidia GH200 GPU (56s), AMD MI300X GPU (76s), AMD
+  MI210 GPU (358s), Nvidia A100 GPU (105s) and Intel PVC 1550 (176s).
+  ](media/grteclyn-benchmarks.svg)\
 :::
 
 ::::
@@ -245,15 +261,20 @@ developing support for using AMReX.
 
 ::: {.column width="50%"}
 ::: {style="text-align: center"}
-![](media/punctures.svg){height=320}
+![A plot showing the trajectories of the two punctures in a binary black-hole
+  simulation. The punctures spiral inwards and complete ~10 orbits before
+  merging](media/punctures.svg){height=320}\
 
-![](media/mi300-hackathon-results.svg)
+![A bar chart showing the mean walltime to run a benchmark with the BinaryBH
+ example on an AMD MI300A APU. There are 2 bars, one for before refactoring
+ (103s) and one for after refactoring (60s)](media/mi300-hackathon-results.svg)\
 :::
 :::
 
 ::::
 
-# MHDueT {background-color="#40666e"}
+# MHDueT {background-color="#40666e" background-image="media/nr-amrex-fade.png"
+ background-size="contain" background-position="right"}
 
 ## The MHDueT code {.smaller}
 
@@ -279,9 +300,11 @@ developing support for using AMReX.
 
 ::: {.column width="40%"}
 ::: {style="text-align: center"}
-![](media/mhduet-logo.png){height=250}
+![MHDueT logo](media/mhduet-logo.png){height=250}\
 
-![](media/mhduet-jetformation.png)
+![A visualization of the formation of magnetically dominated jets in
+  hypermassive neutron stars produced by a binary merger simulated using MHDueT.
+  ](media/mhduet-jetformation.png)\
 :::
 :::
 
@@ -299,10 +322,15 @@ developing support for using AMReX.
 * Dependency build scripts are now just Spack environments rather than a
   collection of custom shell scripts.
 
-# Future work {background-color="#40666e"}
+# Future work {background-color="#40666e"
+  background-image="media/nr-amrex-fade.png" background-size="contain"
+  background-position="right"}
 
-## Particles
+## Particles {.smaller}
 
+:::: {.columns}
+
+::: {.column width="50%"}
 * Extend "diagnostic" particles in GRTeclyn to allow high-order interpolation of
   state variables at arbitrary points in the domain for use with
   * GW extraction on coordinate spheres
@@ -314,6 +342,15 @@ developing support for using AMReX.
 * MHDueT already uses particles in their old SAMRAI version to model neutrino
   transport in high-density, hot fluid matter.
   * Port this feature to AMReX version.
+:::
+
+::: {.column width="50%"}
+![An AI generated visualization of a sphere of particles enclosing a black-hole
+  binary emitting gravitational waves.
+  ](media/gw-extraction-sphere-particles.png)\
+:::
+
+::::
 
 ## UKNR Collaborative Computational Project
 
@@ -333,7 +370,9 @@ developing support for using AMReX.
   * Investigate the possibility of developing common [analysis] tools for NR
     codes.
 
-# Any questions? {background-color="#40666e"}
+# Any questions? {background-color="#40666e"
+  background-image="media/nr-amrex-fade.png" background-size="contain"
+  background-position="right"}
 
 ::: header
 
