@@ -65,7 +65,7 @@ authors:
 
 ::: {.column width="20%"}
 
-### MHDueT
+### MHDuet
 
 ::: {layout-nrow="2" style="text-align:center;"}
 ![Miguel Bezares](media/miguel.png){height=130}
@@ -95,79 +95,125 @@ authors:
 
 ::::
 
+## Predecessor code: [GRChombo](https://github.com/GRTLCollaboration/GRChombo) {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Built on the [Chombo](https://commons.lbl.gov/spaces/chombo/pages/73468344/Chombo+-+Software+for+Adaptive+Solutions+of+Partial+Differential+Equations)
+  libraries for "fully-adaptive" block-structured AMR
+* Written in C++14
+* Explicit vectorization through C++ templates to achieve good performance
+* Hybrid MPI + OpenMP parallelization
+* Intended for more exotic problems than most other NR codes:
+  * Cosmology: Inflation, cosmic strings, etc.
+  * Boson stars/oscillatons/axion stars
+  * Modified gravity
+  * Higher-dimensional BHs
+  * Much more
+
+:::
+
+::: {.column width="50%" style="text-align:center"}
+
+![](media/grchombo-higherd-bh.png){height=200}
+
+![](media/grchombo-string-radiation.png){height=200}
+
+:::
+
+::::
+
+## Predecessor code: [MHDuet](http://mhduet.liu.edu/) (SAMRAI version) {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Automatically generated code using the [Simflowny](https://bitbucket.org/iac3/simflowny) infrastructure
+* Built on [SAMRAI](https://computing.llnl.gov/projects/samrai)
+* MPI parallelism
+* GRMHD with tabulated EoSs and high resolution shock capturing
+* Neutrino transport
+* Mostly used for problems involving compact object binaries:
+  * Boson stars
+  * Neutron stars
+  * Black holes
+* Often used to investigate the behaviour of the magnetic field in these problems
+
+:::
+
+::: {.column width="50%" style="text-align:center"}
+![A visualization of the formation of magnetically dominated jets in
+  hypermassive neutron stars produced by a binary merger simulated using MHDueT.
+  ](media/mhduet-jetformation.png){height=250}\
+
+![Visualization of four different cases of the coalescence of unequal-mass
+highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
+:::
+
+::::
+
 ## Common methods {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-* Discretization:
-  * **Finite differences**
-    * **Cell-centered**
-    * **Vertex/node-centered**
-  * Finite volume (for fluids)
-  * Spectral methods
-  * Discontinuous Galerkin (DG) methods
-* Finite-difference mesh refinement:
-  * **Block-structured AMR**
-    * "Moving boxes" for compact object binaries
-    * More adaptive for more exotic spacetimes
-  * Oct-tree AMR
+* Finite difference discretization
+    * Cell-centred (GRChombo)
+    * Node-centred (MHDuet)
+* Block-structured AMR
+  * Can emulate "moving boxes" for compact object binaries
+  * Generally something more adaptive for more exotic spacetimes
+  * Can fix some of the coarser grids to avoid regridding noise near GW extraction spheres
+  * Arbitrary refinement criterion
+* Method of lines
+  * Fourth order Runge-Kutta time integration
+  * Fourth or sixth-order spatial discretization
+
 :::
 
 ::: {.column width="50%"}
-* Method of lines
-  * **Fourth order Runge-Kutta time integration**
-  * **Fourth or sixth-order spatial discretization**
-* **Kreiss-Oliger dissipation**
+* Kreiss-Oliger dissipation
 * Boundary conditions:
-  * **Outgoing radiation (Sommerfeld)**
-  * **Symmetric/reflective**
-  * **Extrapolating**
-  * Multipatch approaches: separate (e.g. spherical) outer grids
-:::
-
-::::
-## NR codes {.smaller}
-
-There are many NR codes/frameworks including (but by no means limited to):
-
-:::: {.columns}
-
-::: {.column width="30%"}
-### Oct-tree AMR
-* [GR-Athena++](https://doi.org/10.3847/1538-4365/ac157b)
-* [Gmunu](https://doi.org/10.1093/mnras/stab2606)
-* [Dendro-GR](https://paralab.github.io/Dendro-GR/)
-* [GRAMSES](https://doi.org/10.1088/1475-7516/2020/01/007)
-:::
-
-::: {.column width="30%"}
-### [Pseudo-]spectral/DG codes
-* [SpEC](https://www.black-holes.org/for-researchers/spec)/[SpECTRE](https://spectre-code.org/)
-* [bamps](https://doi.org/10.1103/PhysRevD.93.063006)
-* [SFINGE](https://doi.org/10.1007/s10714-021-02865-5)
-
-### Other
-* [SENR/NRPy+](https://nrpyplus.net/)
-:::
-
-::: {.column width="40%"}
-### Block-structured AMR
-* [Cactus](https://www.cactuscode.org/)/[Einstein Toolkit](https://www.einsteintoolkit.org/)$^{\dagger}$
-  * [McLachlan](https://www.cct.lsu.edu/~eschnett/McLachlan/), [LazEv](https://ccrg.rit.edu/content/software/lazev), [Maya](http://dx.doi.org/10.1088/0264-9381/24/12/S04), [Lean](http://dx.doi.org/10.1103/PhysRevD.76.104015), [Canuda](https://doi.org/10.5281/zenodo.3565474), ...
-* [BAM](https://doi.org/10.1103/PhysRevD.54.7361)
-* [PAMR/AMRD libraries](https://fpretori.scholar.princeton.edu/group-resources)
-* [Hahndol/PARAMESH](http://dx.doi.org/10.1103/PhysRevLett.96.111102)
-* [HAD](http://dx.doi.org/10.1088/0264-9381/23/22/025)
-* [CosmoGRaPH](https://cwru-pat.github.io/cosmograph/)
-* [Simflowny](https://bitbucket.org/iac3/simflowny/src/master/)/[**MHDueT**](http://mhduet.liu.edu/)$^{\dagger}$
-* [GRChombo](https://github.com/GRTLCollaboration/GRChombo)/[**GRTeclyn**](https://github.com/GRTLCollaboration/GRTeclyn)$^{\dagger}$
+  * Fourth order interpolation at finer level boundaries from coarser levels
+  * Outgoing radiation (Sommerfeld)
+  * Symmetric/reflective
+  * Extrapolating
+* CCZ4 evolution system
+  * Enforcement of algebraic constraints (GRChombo)
+  * Damping of algebraic constraints (MHDuet)
+* Moving puncture gauge conditions
 :::
 
 ::::
 
-${\dagger}$ denotes codes/frameworks that are either transitioning to or
-developing support for using AMReX.
+## Why [AMReX](https://amrex-codes.github.io/)? {.smaller}
+
+* Mature and performant cross-vendor (Nvidia/AMD/Intel) GPU support
+* Similar block-structured AMR capabilities to Chombo[^1]/SAMRAI
+* AMReX previously received significant support as part of the
+  US [Exascale Computing Program](https://www.exascaleproject.org/) (ECP).
+  * There are many AMReX applications across diverse research areas.
+  * Large user community (Slack workspace/GitHub discussions)
+* AMReX is now an established project in the [High Performance Software Foundation](https://hpsf.io/).
+* Helpful and very active development team:
+  * In particular, Weiqun Zhang has been instrumental in helping us to get started
+
+::: {layout-nrow="1"}
+
+![](media/amrex-logo.png){width=300}
+
+![](https://www.exascaleproject.org/wp-content/themes/exascale/images/ecp-logo.png){width=200}
+
+![](https://hpsf.io/wp-content/uploads/sites/18/2024/11/HPSF_horizontal-tagline-color.svg){width=200}
+
+
+:::
+
+[^1]: Both Chombo and AMReX originated from the same BoxLib software so APIs are 
+      very similar.
 
 # GRTeclyn {background-color="#40666e"
   background-image="media/nr-amrex-fade.png" background-size="contain"
@@ -178,22 +224,23 @@ developing support for using AMReX.
 :::: {.columns}
 
 ::: {.column width="50%"}
-* GRTeclyn is an in-development port of GRChombo (previously built on the Chombo
-  libraries) to AMReX.
+
+* GRTeclyn is an in-development port of GRChombo to AMReX.
 * "Teclyn" is Welsh for "tool".
-* Features
-  * `Amr` based
-  * Cell-centered but finite-difference rather than finite-volume
-    * Fourth-order cell-centered interpolator from coarse to fine (`CellQuartic`)
-    * Fourth-order interpolation from fine to coarse
-  * Fourth-order Runge-Kutta time integration
-  * Currently, just `BinaryBH` example which evolves black-hole binaries.
+* Features:
+  * Uses AMReX's `Amr` framework where the management of inter-level operations
+    is handled by AMReX (similar to GRChombo approach).
+  * Higher-order spatial interpolation between coarser and finer levels than
+    GRChombo.
+  * Black-hole binary evolution.
   * Designed to be flexible and easy to adapt to new problems.
+  * Familiar structure for existing GRChombo users.
+  * Tested and runs well on Nvidia, AMD and Intel GPUs
 
 :::
 
 ::: {.column width="50%"}
-{{< video media/grteclyn-grchombo-bbh-comparison.mp4 >}}
+![](media/grteclyn-grchombo-bbh-comparison.mp4)
 
 ![A bar chart showing the mean walltime taken to evolve a single timestep on
   various different GPUs and a CPU. The results are as follows: Intel Xeon
@@ -210,16 +257,16 @@ developing support for using AMReX.
 
 ::: {.column width="50%"}
 * Black-hole puncture tracking:
-  * Allows us to track the "centers" of black hole during the simulation.
-  * Uses AMReX's particle infrastructure.
-  * Typically 2 BHs so just 2 puncture particles so maybe overkill.
-  * Good experience for future particle use.
+  * More complicated than GRChombo due to data being GPU-resident
+  * Uses AMReX's particle infrastructure (also on GPUs)
+  * Typically 2 BHs so just 2 puncture particles so maybe overkill
+  * Good experience for future particle use
 * AMD MI300A hackathon:
   * Lots of variables so high register pressure in RHS kernels.
   * Legacy complicated data structure from GRChombo increases this.
   * Refactoring led to a ~2x speedup in RHS kernels (~40% overall) on AMD MI300A
     APUs.
-* Currently working on adding support for basic matter.
+* Support for evolving scalar matter.
 :::
 
 ::: {.column width="50%"}
@@ -236,38 +283,32 @@ developing support for using AMReX.
 
 ::::
 
-# MHDueT {background-color="#40666e" background-image="media/nr-amrex-fade.png"
+# MHDuet {background-color="#40666e" background-image="media/nr-amrex-fade.png"
  background-size="contain" background-position="right"}
 
-## The MHDueT code {.smaller}
+## The MHDuet code {.smaller}
 
 :::: {.columns}
 
-::: {.column width="60%"}
-* MHDueT is a code that is automatically generated using the Simflowny
-  infrastructure.
-* Previously used the SAMRAI library.
+::: {.column width="50%"}
+* Support has been added to Simflowny to allow it to generate MHDuet with AMReX 
+  as the AMR backend instead of SAMRAI
 * Features
-  * `AmrCore` based.
-  * Mostly node-centered
-    * Fifth order polynomial interpolation from coarse to fine
-  * Custom fourth order Runga-Kutta time integration
-  * Supports Magnetohydrodynamics (MHD)
-    * High resolution shock capturing with WENO reconstruction
-    * Arbitrary EOS via HDF5 tabulated input
-  * Can simulate binaries of boson stars, neutron stars, black holes
-    and more.
-  * Auto-generated using Simflowny infrastructure to enable minimal user
-    programming.
+  * Unlike GRTeclyn it uses AMReX's `AmrCore` framework so more parts are
+    implemented on the MHDuet side.
+  * Custom RK4 time integration
+  * Fifth order polynomial interpolation from coarse to fine
+  * Uses FUKA/LORENE for compact binary initial data
+  * Supports most of the GRMHD features from the SAMRAI version
+  * Tested and runs well on Nvidia GPUs
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 ::: {style="text-align: center"}
-![MHDueT logo](media/mhduet-logo.png){height=250}\
+<!-- ![MHDueT logo](media/mhduet-logo.png){height=250}\ -->
 
-![A visualization of the formation of magnetically dominated jets in
-  hypermassive neutron stars produced by a binary merger simulated using MHDueT.
-  ](media/mhduet-jetformation.png)\
+![Strong scaling plot for the boson star code with 8 fixed mesh refinement
+levels on several different systems](media/mhduet-bs-scaling.png)
 :::
 :::
 
@@ -315,19 +356,14 @@ developing support for using AMReX.
 
 ::::
 
-## UKNR Collaborative Computational Project
+## [UKNR CCP](https://www.uknumericalrelativity.org/uknr-ccp-development) Benchmarking
 
-* We have been awarded a grant to build a roadmap for the creation of a [UK
-  Numerical Relativity](http://www.uknumericalrelativity.org/)
-  [Collaborative Computational Project/Community
-  (CCP)](https://www.uknumericalrelativity.org/uknr-ccp-development) as
-  part of the [Computational Science Centre for Research Communities
-  (CoSeC)](https://www.cosec.ac.uk/) programme.
-* This would provide long-term funding for our scientific community including
-  shared cross-community code development.
-* As part of the technical branch of this grant we will:
-  * Benchmark the performance of existing NR codes in use by UK researchers,
-    and assess their readiness for future systems.
+* The creation of a UKNR CCP would provide long-term funding for our community
+  including shared cross-community code development.
+* As part of the technical component of the initial grant for the creation of
+  this CCP, we will undertake the following:
+  * Benchmark and compare the performance of existing NR codes in use by UK
+    researchers, and assess their readiness for future systems.
   * Identify opportunities to make data formats more interoperable and allow
     codes to share simulation/initial data.
   * Investigate the possibility of developing common [analysis] tools for NR
