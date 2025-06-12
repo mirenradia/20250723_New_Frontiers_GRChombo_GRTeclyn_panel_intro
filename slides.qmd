@@ -76,7 +76,7 @@ authors:
 :::
 
 ::: {.column width="40%"}
-### [UKNR](http://www.uknumericalrelativity.org/) CCP
+### UKNR CCP
 
 ::: {layout-nrow="2" style="text-align:center;"}
 ![Eugene Lim](media/eugene.png){fig-align="left"}
@@ -91,43 +91,6 @@ authors:
 
 :::
 
-:::
-
-::::
-
-
-
-## What is Numerical Relativity (NR)? {.smaller}
-
-:::: {.columns}
-
-::: {.column width="50%"}
-* Numerical Relativity is an area of research that uses numerical methods to
-  find and investigate solution to Einstein's equation of General
-  Relativity (and other modified theories of gravity),
-
-  $$ \underbrace{G_{ab}}_{\text{curvature}} +
-    \underbrace{\Lambda g_{ab}}_{\text{cosmological const.}} =
-    \underbrace{8\pi T_{ab}}_{\text{EM tensor}}. $$
-
-* We recast the equations into a set of coupled non-linear hyperbolic PDEs with
-  elliptic constraints that we solve for the initial data.
-
-* Common problems include compact object binaries (black holes, neutron stars,
-  more exotic objects) but NR is also used to study cosmological problems and
-  perform "numerical experiments" for fundamental physics.
-
-* We are often interested in the gravitational waves (GWs) emitted in a
-  simulation, particularly in the astrophysical compact binary case.
-:::
-
-::: {.column width="50%"}
-
-{{< video https://www.youtube.com/embed/mgr7W-5o1Og?si=eYS-YKclG015d0-Y width="480" height="270" start="15" >}}
-
-![A plot showing a mode of the strain (spacetime distortion) calculated from a
-  binary black-hole simulation](media/bbh-strain-plot.svg){.absolute bottom=7
-  left=525 width="480"}\
 :::
 
 ::::
