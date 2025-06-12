@@ -1,9 +1,11 @@
-# Numerical Relativity with AMReX
+# GRTeclyn and MHDuet
+### Numerical Relativity with AMReX
 
 This repository contains the code to generate the slides for my presentation
-about "Numerical Relativity with AMReX" delivered by Miren Radia at the [HPSF
-Conference 2025](https://events.linuxfoundation.org/hpsf-conference/) on Wed 7
-May 2025.
+about [GRTeclyn](https://github.com/GRTLCollaboration/GRTeclyn) and 
+[MHDuet](http://mhduet.liu.edu/) delivered by Miren Radia at the [Gregynog
+Numerical Relativity 2025](https://sites.google.com/view/nrgregynog) meeting on
+Wed 18 June 2025.
 
 ## Quarto
 
