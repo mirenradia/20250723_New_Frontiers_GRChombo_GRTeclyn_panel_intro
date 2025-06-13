@@ -155,6 +155,7 @@ authors:
 * Built on [SAMRAI](https://computing.llnl.gov/projects/samrai)
 * MPI parallelism
 * GRMHD with tabulated EoSs and high resolution shock capturing
+* Large eddy simulation techniques with the gradient sub-grid scale model
 * Neutrino transport
 * Mostly used for problems involving compact object binaries:
   * Boson stars
@@ -167,7 +168,7 @@ authors:
 ::: {.column width="50%" style="text-align:center"}
 ![A visualization of the formation of magnetically dominated jets in
   hypermassive neutron stars produced by a binary merger simulated using MHDueT.
-  ](media/mhduet-jetformation.png){height=250}\
+  ](media/mhduet-jetformation.png){height=200}\
 
 ![Visualization of four different cases of the coalescence of unequal-mass
 highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
@@ -219,7 +220,7 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
   * Large user community (Slack workspace/GitHub discussions)
 * AMReX is now an established project in the [High Performance Software Foundation](https://hpsf.io/).
 * Helpful and very active development team:
-  * In particular, Weiqun Zhang has been instrumental in helping us to get started
+  * In particular, Weiqun Zhang has been instrumental in helping us to get started.
 
 ::: {layout-nrow="1"}
 
@@ -249,12 +250,12 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
 * "Teclyn" is Welsh for "tool".
 * Features:
   * Uses AMReX's `Amr` framework where the management of inter-level operations
-    is handled by AMReX (similar to GRChombo approach).
+    is handled by AMReX (similar to GRChombo approach)
   * Higher-order spatial interpolation between coarser and finer levels than
-    GRChombo.
-  * Black-hole binary evolution.
-  * Designed to be flexible and easy to adapt to new problems.
-  * Familiar structure for existing GRChombo users.
+    GRChombo
+  * Black-hole binary evolution
+  * Designed to be flexible and easy to adapt to new problems
+  * Familiar structure for existing GRChombo users
   * Tested and runs well on Nvidia, AMD and Intel GPUs
 
 :::
@@ -282,11 +283,11 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
   * Typically 2 BHs so just 2 puncture particles so maybe overkill
   * Good experience for future particle use
 * AMD MI300A hackathon:
-  * Lots of variables so high register pressure in RHS kernels.
-  * Legacy complicated data structure from GRChombo increases this.
+  * Lots of variables so high register pressure in RHS kernels
+  * Legacy complicated data structure from GRChombo increases this
   * Refactoring led to a ~2x speedup in RHS kernels (~40% overall) on AMD MI300A
     APUs.
-* Support for evolving scalar matter.
+* Support for evolving scalar matter
 :::
 
 ::: {.column width="50%"}
@@ -311,7 +312,7 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
 :::: {.columns}
 
 ::: {.column width="50%"}
-* Support has been added to Simflowny to allow it to generate MHDuet with AMReX 
+* Support has been added to Simflowny to allow it to generate MHDuet with AMReX
   as the AMR backend instead of SAMRAI
 * Features
   * Unlike GRTeclyn it uses AMReX's `AmrCore` framework so more parts are
@@ -327,8 +328,8 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
 ::: {style="text-align: center"}
 <!-- ![MHDueT logo](media/mhduet-logo.png){height=250}\ -->
 
-![Strong scaling plot for the boson star code with 8 fixed mesh refinement
-levels on several different systems](media/mhduet-bs-scaling.png)
+![Strong scaling plots for the MHD code with 9 fixed mesh refinement
+levels](media/mhduet-mhd-scaling.png)
 :::
 :::
 
