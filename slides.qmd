@@ -36,14 +36,26 @@ authors:
 
 ## Who are we? {.smaller}
 
-* I am a Research Software Engineer (RSE) in Research Computing Services,
-  University of Cambridge.
+:::: {.columns}
+
+::: {.column width="85%"}
+
+* I am a Research Software Engineer (RSE) at the University of Cambridge.
 * Previously, I completed a PhD in numerical relativity.
 * I am involved with several numerical relativity codes/projects/collaborations:
 
+:::
+
+::: {.column width="15%"}
+![](media/miren.jpg){.cap-location:margin fig-align="top" height=115}
+
+:::
+
+::::
+
 :::: {.columns}
 
-::: {.column width="40%"}
+::: {.column width="36%"}
 
 ### GRTeclyn
 
@@ -63,19 +75,27 @@ authors:
 
 :::
 
-::: {.column width="20%"}
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="18%"}
 
 ### MHDuet
 
 ::: {layout-nrow="2" style="text-align:center;"}
-![Miguel Bezares](media/miguel.png){height=130}
+![Miguel Bezares](media/miguel.png){height=115}
 
-![Carlos Palenzuela](media/carlos.jpg){height=130}
+![Carlos Palenzuela](media/carlos.jpg){height=115}
 :::
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="36%"}
 ### UKNR CCP
 
 ::: {layout-nrow="2" style="text-align:center;"}
@@ -85,9 +105,9 @@ authors:
 
 ![Mark Hannam](media/mark.jpg){fig-align="left"}
 
-![Geraint Pratten](media/geraint.jpg){height=130}
+![Geraint Pratten](media/geraint.jpg){height=115}
 
-![Patricia Schmidt](media/patricia.jpg){height=130}
+![Patricia Schmidt](media/patricia.jpg){height=115}
 
 :::
 
