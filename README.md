@@ -1,11 +1,13 @@
-# GRTeclyn and MHDuet
-### Numerical Relativity with AMReX
+# GRChombo and GRTeclyn
+### New Frontiers in NR 2025 Panel discussion
 
-This repository contains the code to generate the slides for my presentation
-about [GRTeclyn](https://github.com/GRTLCollaboration/GRTeclyn) and 
-[MHDuet](http://mhduet.liu.edu/) delivered by Miren Radia at the [Gregynog
-Numerical Relativity 2025](https://sites.google.com/view/nrgregynog) meeting on
-Wed 18 June 2025.
+This repository contains the code to generate the slides for a short
+presentation introducing
+[GRChombo](https://github.com/GRTLCollaboration/GRChombo) and
+[GRTeclyn](https://github.com/GRTLCollaboration/GRTeclyn) delivered by Miren
+Radia as part of a panel discussion on numerical relativity codes at the [New
+Frontiers in Numerical Relativity 2025](https://grg.uib.es/newfrontiersNR25/)
+conference at the University of the Balearic Islands on Wednesday 23 July 2025.
 
 ## Quarto
 
