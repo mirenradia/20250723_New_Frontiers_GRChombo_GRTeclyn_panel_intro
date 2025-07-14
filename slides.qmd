@@ -1,15 +1,13 @@
 ---
-title: "GRTeclyn and MHDuet"
-subtitle: "Numerical Relativity with AMReX"
-date: "2025-06-18"
+title: "GRChombo and GRTeclyn"
+subtitle: "Panel discussion introduction"
+date: "2025-07-23"
 date-format: "dddd DD MMMM YYYY"
 format:
   clean-revealjs:
     embed-resources: false
     transition: slide
-    logo: media/cosec-stfc-header-logo.png
-    footer-logo-link: https://www.cosec.ac.uk/
-    footer: Gregynog Numerical Relativity 2025
+    footer: New Frontiers in NR 2025
     sc-sb-title: true
     auto-play-media: true
     menu:
@@ -30,92 +28,8 @@ authors:
      - name: University of Cambridge
 
 ---
-# Introduction {background-color="#40666e"
-  background-image="media/nr-amrex-fade.png" background-size="contain"
-  background-position="right"}
 
-## Who are we? {.smaller}
-
-:::: {.columns}
-
-::: {.column width="85%"}
-
-* I am a Research Software Engineer (RSE) at the University of Cambridge.
-* Previously, I completed a PhD in numerical relativity.
-* I am involved with several numerical relativity codes/projects/collaborations:
-
-:::
-
-::: {.column width="15%"}
-![](media/miren.jpg){.cap-location:margin fig-align="top" height=115}
-
-:::
-
-::::
-
-:::: {.columns}
-
-::: {.column width="36%"}
-
-### GRTeclyn
-
-::: {layout-nrow="2" style="text-align:center;"}
-![Katy Clough](media/katy.png){fig-align="left"}
-
-![Eugene Lim](media/eugene.png){fig-align="left"}
-
-![Juliana Kwan](media/juliana.png){fig-align="left"}
-
-![Paul Shellard](media/paul.png){fig-align="left"}
-
-![Pau Figueras](media/pau.png){fig-align="left"}
-
-![Ericka Florio](media/ericka.png){fig-align="left"}
-:::
-
-:::
-
-::: {.column width="5%"}
-
-:::
-
-::: {.column width="18%"}
-
-### MHDuet
-
-::: {layout-nrow="2" style="text-align:center;"}
-![Miguel Bezares](media/miguel.png){height=115}
-
-![Carlos Palenzuela](media/carlos.jpg){height=115}
-:::
-
-:::
-
-::: {.column width="5%"}
-
-:::
-
-::: {.column width="36%"}
-### UKNR CCP
-
-::: {layout-nrow="2" style="text-align:center;"}
-![Eugene Lim](media/eugene.png){fig-align="left"}
-
-![Katy Clough](media/katy.png){fig-align="left"}
-
-![Mark Hannam](media/mark.jpg){fig-align="left"}
-
-![Geraint Pratten](media/geraint.jpg){height=115}
-
-![Patricia Schmidt](media/patricia.jpg){height=115}
-
-:::
-
-:::
-
-::::
-
-## Predecessor code: [GRChombo](https://github.com/GRTLCollaboration/GRChombo) {.smaller}
+## Predecessor/current code: [GRChombo](https://github.com/GRTLCollaboration/GRChombo) {.smaller}
 
 :::: {.columns}
 
@@ -145,45 +59,41 @@ authors:
 
 ::::
 
-## Predecessor code: [MHDuet](http://mhduet.liu.edu/) (SAMRAI version) {.smaller}
+## Successor/future code: [GRTeclyn](https://github.com/GRTLCollaboration/GRTeclyn) {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-* Automatically generated code using the [Simflowny](https://bitbucket.org/iac3/simflowny) infrastructure
-* Built on [SAMRAI](https://computing.llnl.gov/projects/samrai)
-* MPI parallelism
-* GRMHD with tabulated EoSs and high resolution shock capturing
-* Large eddy simulation techniques with the gradient sub-grid scale model
-* Neutrino transport
-* Mostly used for problems involving compact object binaries:
-  * Boson stars
-  * Neutron stars
-  * Black holes
-* Often used to investigate the behaviour of the magnetic field in these problems
-
+* GRTeclyn is an in-development port of GRChombo to AMReX.
+* "Teclyn" is Welsh for "tool".
+* Features:
+  * Built on the [AMReX](https://amrex-codes.github.io/amrex/) framework for block-structured AMR.
+  * Higher-order spatial interpolation between coarser and finer levels than
+    GRChombo.
+  * Black-hole binary evolution
+  * Designed to be flexible and easy to adapt to new problems
+  * Familiar structure for existing GRChombo users
+  * Tested and runs well on Nvidia, AMD and Intel GPUs
 :::
 
-::: {.column width="50%" style="text-align:center"}
-![A visualization of the formation of magnetically dominated jets in
-  hypermassive neutron stars produced by a binary merger simulated using MHDueT.
-  ](media/mhduet-jetformation.png){height=200}\
+::: {.column width="50%"}
+![](media/grteclyn-grchombo-bbh-comparison.mp4)
 
-![Visualization of four different cases of the coalescence of unequal-mass
-highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
+![A bar chart showing the mean walltime taken to evolve a single timestep on
+  various different GPUs and a CPU. The results are as follows: Intel Xeon
+  Platinum 8480 CPU (480s), Nvidia GH200 GPU (56s), AMD MI300X GPU (76s), AMD
+  MI210 GPU (358s), Nvidia A100 GPU (105s) and Intel PVC 1550 (176s).
+  ](media/grteclyn-benchmarks.svg)\
 :::
 
 ::::
-
-## Common methods {.smaller}
+## Methods {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-* Finite difference discretization
-    * Cell-centred (GRChombo)
-    * Node-centred (MHDuet)
+* Cell-centred finite-difference discretization
 * Block-structured AMR
   * Can emulate "moving boxes" for compact object binaries
   * Generally something more adaptive for more exotic spacetimes
@@ -203,8 +113,6 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
   * Symmetric/reflective
   * Extrapolating
 * CCZ4 evolution system
-  * Enforcement of algebraic constraints (GRChombo)
-  * Damping of algebraic constraints (MHDuet)
 * Moving puncture gauge conditions
 :::
 
@@ -213,7 +121,7 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
 ## Why [AMReX](https://amrex-codes.github.io/)? {.smaller}
 
 * Mature and performant cross-vendor (Nvidia/AMD/Intel) GPU support
-* Similar block-structured AMR capabilities to Chombo[^1]/SAMRAI
+* Similar block-structured AMR capabilities to Chombo[^1]
 * AMReX previously received significant support as part of the
   US [Exascale Computing Program](https://www.exascaleproject.org/) (ECP).
   * There are many AMReX applications across diverse research areas.
@@ -236,164 +144,7 @@ highly-compact boson stars ](media/mhduet-unequalbs.png){height=250}\
 [^1]: Both Chombo and AMReX originated from the same BoxLib software so APIs are 
       very similar.
 
-# GRTeclyn {background-color="#40666e"
-  background-image="media/nr-amrex-fade.png" background-size="contain"
-  background-position="right"}
-
-## The GRTeclyn code {.smaller}
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-* GRTeclyn is an in-development port of GRChombo to AMReX.
-* "Teclyn" is Welsh for "tool".
-* Features:
-  * Uses AMReX's `Amr` framework where the management of inter-level operations
-    is handled by AMReX (similar to GRChombo approach)
-  * Higher-order spatial interpolation between coarser and finer levels than
-    GRChombo
-  * Black-hole binary evolution
-  * Designed to be flexible and easy to adapt to new problems
-  * Familiar structure for existing GRChombo users
-  * Tested and runs well on Nvidia, AMD and Intel GPUs
-
-:::
-
-::: {.column width="50%"}
-![](media/grteclyn-grchombo-bbh-comparison.mp4)
-
-![A bar chart showing the mean walltime taken to evolve a single timestep on
-  various different GPUs and a CPU. The results are as follows: Intel Xeon
-  Platinum 8480 CPU (480s), Nvidia GH200 GPU (56s), AMD MI300X GPU (76s), AMD
-  MI210 GPU (358s), Nvidia A100 GPU (105s) and Intel PVC 1550 (176s).
-  ](media/grteclyn-benchmarks.svg)\
-:::
-
-::::
-
-## Recent development {.smaller}
-
-:::: {.columns}
-
-::: {.column width="50%"}
-* Black-hole puncture tracking:
-  * More complicated than GRChombo due to data being GPU-resident
-  * Uses AMReX's particle infrastructure (also on GPUs)
-  * Typically 2 BHs so just 2 puncture particles so maybe overkill
-  * Good experience for future particle use
-* AMD MI300A hackathon:
-  * Lots of variables so high register pressure in RHS kernels
-  * Legacy complicated data structure from GRChombo increases this
-  * Refactoring led to a ~2x speedup in RHS kernels (~40% overall) on AMD MI300A
-    APUs.
-* Support for evolving scalar matter
-:::
-
-::: {.column width="50%"}
-::: {style="text-align: center"}
-![A plot showing the trajectories of the two punctures in a binary black-hole
-  simulation. The punctures spiral inwards and complete ~10 orbits before
-  merging](media/punctures.svg){height=320}\
-
-![A bar chart showing the mean walltime to run a benchmark with the BinaryBH
- example on an AMD MI300A APU. There are 2 bars, one for before refactoring
- (103s) and one for after refactoring (60s)](media/mi300-hackathon-results.svg)\
-:::
-:::
-
-::::
-
-# MHDuet {background-color="#40666e" background-image="media/nr-amrex-fade.png"
- background-size="contain" background-position="right"}
-
-## The MHDuet code {.smaller}
-
-:::: {.columns}
-
-::: {.column width="50%"}
-* Support has been added to Simflowny to allow it to generate MHDuet with AMReX
-  as the AMR backend instead of SAMRAI
-* Features
-  * Unlike GRTeclyn it uses AMReX's `AmrCore` framework so more parts are
-    implemented on the MHDuet side.
-  * Custom RK4 time integration
-  * Fifth order polynomial interpolation from coarse to fine
-  * Uses FUKA/LORENE for compact binary initial data
-  * Supports most of the GRMHD features from the SAMRAI version
-  * Tested and runs well on Nvidia GPUs
-:::
-
-::: {.column width="50%"}
-::: {style="text-align: center"}
-<!-- ![MHDueT logo](media/mhduet-logo.png){height=250}\ -->
-
-![Strong scaling plots for the MHD code with 9 fixed mesh refinement
-levels](media/mhduet-mhd-scaling.png)
-:::
-:::
-
-::::
-
-## Recent development
-
-* Addition of nodal syncing when filling boundary nodes to prevent instabilities
-  (only appeared on GPUs).
-* Refactoring of custom higher-order extrapolating BCs to speed up these loops
-  ~3000x on Nvidia A100 GPUs.
-* Reimplementation of reduction calculation to use AMReX `ParReduce` functions
-  rather than custom code ported from SAMRAI which was neither GPU-offloaded
-  nor threaded/threadsafe.
-* Dependency build scripts are now just Spack environments rather than a
-  collection of custom shell scripts.
-
-# Future work {background-color="#40666e"
-  background-image="media/nr-amrex-fade.png" background-size="contain"
-  background-position="right"}
-
-## Particles {.smaller}
-
-:::: {.columns}
-
-::: {.column width="50%"}
-* Extend "diagnostic" particles in GRTeclyn to allow high-order interpolation of
-  state variables at arbitrary points in the domain for use with
-  * GW extraction on coordinate spheres
-  * Apparent horizon finding (~the boundary of black holes)
-  * Matter flux around coordinate spheres
-* Add physical particles in GRTeclyn to model collisionless dark matter
-  particles.
-* Add geodesic tracer particles to investigate behaviour around compact objects.
-* MHDueT already uses particles in their old SAMRAI version to model neutrino
-  transport in high-density, hot fluid matter.
-  * Port this feature to AMReX version.
-:::
-
-::: {.column width="50%"}
-![An AI generated visualization of a sphere of particles enclosing a black-hole
-  binary emitting gravitational waves.
-  ](media/gw-extraction-sphere-particles.png)\
-:::
-
-::::
-
-## [UKNR CCP](https://www.uknumericalrelativity.org/uknr-ccp-development) Benchmarking
-
-* The creation of a UKNR CCP would provide long-term funding for our community
-  including shared cross-community code development.
-* As part of the technical component of the initial grant for the creation of
-  this CCP, we will undertake the following:
-  * Benchmark and compare the performance of existing NR codes in use by UK
-    researchers, and assess their readiness for future systems.
-  * Identify opportunities to make data formats more interoperable and allow
-    codes to share simulation/initial data.
-  * Investigate the possibility of developing common [analysis] tools for NR
-    codes.
 
 # Any questions? {background-color="#40666e"
   background-image="media/nr-amrex-fade.png" background-size="contain"
   background-position="right"}
-
-::: header
-
-:::
