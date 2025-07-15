@@ -40,7 +40,8 @@ authors:
 * Written in C++14
 * Explicit vectorization through C++ templates to achieve good performance
 * Hybrid MPI + OpenMP parallelization
-* Intended for more exotic problems than most other NR codes:
+* Project started in ~2012 with code becoming open source in 2018.
+* Intended for more exotic problems than some other NR codes:
   * Cosmology: Inflation, cosmic strings, etc.
   * Boson stars/oscillatons/axion stars
   * Modified gravity
@@ -68,11 +69,11 @@ authors:
 * GRTeclyn is an in-development port of GRChombo to AMReX.
 * "Teclyn" is Welsh for "tool".
 * Features:
-  * Built on the [AMReX](https://amrex-codes.github.io/amrex/) framework for block-structured AMR.
+  * Built on the [AMReX](https://amrex-codes.github.io/amrex/) framework for
+    block-structured AMR with good GPU support.
   * Higher-order spatial interpolation between coarser and finer levels than
     GRChombo.
   * Black-hole binary evolution
-  * Designed to be flexible and easy to adapt to new problems
   * Familiar structure for existing GRChombo users
   * Tested and runs well on Nvidia, AMD and Intel GPUs
 :::
@@ -141,8 +142,56 @@ authors:
 
 :::
 
-[^1]: Both Chombo and AMReX originated from the same BoxLib software so APIs are 
+[^1]: Both Chombo and AMReX originated from the same BoxLib software so APIs are
       very similar.
+
+## Coding paradigms
+
+* Simple structure that is easy to adapt to new problems.
+  * We inherit this from Chombo/AMReX (both very similar).
+* No complicated code-generation procedures
+  * Easier to debug and/or modify
+* Low number of dependencies
+  * Easier to set up/better portability
+* Focus on ensuring good performance e.g.:
+  * GRChombo: Explicit vector intrinsics instead of relying on compiler
+    auto-vectorization
+  * GRTeclyn: No GPU managed memory to keep data GPU-resident and avoid
+    unnecessary transfers
+
+## Challenges and solutions {.smaller}
+
+### Short term
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+#### Challenges
+
+* Transitioning GRChombo users to GRTeclyn
+* Training research users how to modify/develop in a GPU-performant way
+
+:::
+
+::: {.column width="50%"}
+
+#### Solutions
+
+* Training/group hackathons
+* Better documentation
+
+:::
+
+::::
+
+### Long term
+
+* Future GPU performance is only really improving in lower precision floating
+  point datatypes (e.g. 32 bit, 16 bit, 8 bit and even lower).
+* We currently use FP64 (double precision) everywhere.
+* Future GW detectors will need **more** accuracy, not less!
+
 
 
 # Any questions? {background-color="#40666e"
