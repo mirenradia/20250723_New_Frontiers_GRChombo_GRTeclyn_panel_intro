@@ -119,6 +119,80 @@ authors:
 
 ::::
 
+## Coding paradigms {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+* Simple structure in modern C++ that is easy to adapt to new problems.
+  * We inherit this from Chombo/AMReX (both very similar).
+* No complicated code-generation procedures
+  * Easier to debug and/or modify
+* Low number of dependencies
+  * Easier to set up/simplifies portability
+* Performance optimization e.g.:
+  * GRChombo: Explicit vector intrinsics instead of relying on compiler
+    auto-vectorization
+  * GRTeclyn: No GPU managed memory to keep data GPU-resident and avoid
+    unnecessary transfers
+
+:::
+
+::: {.column width="40%"}
+
+<!-- ![](media/code.svg){height="150"} -->
+
+![](media/debugging.png){width="100%"}
+
+<!-- ![](media/dependencies.svg){width="150"} -->
+
+
+:::
+
+::::
+
+## Challenges and solutions {.smaller}
+
+### Shorter term
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+#### Challenges
+
+* Transitioning GRChombo users to GRTeclyn
+* Training research users how to modify/develop/run in a GPU-performant way
+* Improving scientific productivity (time and computational resources)
+
+:::
+
+::: {.column width="50%"}
+
+#### Solutions
+
+* Training/group hackathons
+* Better documentation
+* Collaborate with other codes on developing shared tools
+
+:::
+
+::::
+
+### Longer term
+
+* Future GPU performance is only really improving in lower precision floating
+  point datatypes (e.g. 32 bit, 16 bit, 8 bit and even lower).
+  * Like everyone else we currently use FP64 (double precision) everywhere.
+  * We will need *more* accuracy for future GW detectors, not less!
+
+
+
+# Any questions? {background-color="#40666e"
+  background-image="media/nr-amrex-fade.png" background-size="contain"
+  background-position="right"}
+
 ## Why [AMReX](https://amrex-codes.github.io/)? {.smaller}
 
 * Mature and performant cross-vendor (Nvidia/AMD/Intel) GPU support
@@ -144,56 +218,3 @@ authors:
 
 [^1]: Both Chombo and AMReX originated from the same BoxLib software so APIs are
       very similar.
-
-## Coding paradigms
-
-* Simple structure that is easy to adapt to new problems.
-  * We inherit this from Chombo/AMReX (both very similar).
-* No complicated code-generation procedures
-  * Easier to debug and/or modify
-* Low number of dependencies
-  * Easier to set up/better portability
-* Focus on ensuring good performance e.g.:
-  * GRChombo: Explicit vector intrinsics instead of relying on compiler
-    auto-vectorization
-  * GRTeclyn: No GPU managed memory to keep data GPU-resident and avoid
-    unnecessary transfers
-
-## Challenges and solutions {.smaller}
-
-### Short term
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-#### Challenges
-
-* Transitioning GRChombo users to GRTeclyn
-* Training research users how to modify/develop in a GPU-performant way
-
-:::
-
-::: {.column width="50%"}
-
-#### Solutions
-
-* Training/group hackathons
-* Better documentation
-
-:::
-
-::::
-
-### Long term
-
-* Future GPU performance is only really improving in lower precision floating
-  point datatypes (e.g. 32 bit, 16 bit, 8 bit and even lower).
-* We currently use FP64 (double precision) everywhere.
-* Future GW detectors will need **more** accuracy, not less!
-
-
-
-# Any questions? {background-color="#40666e"
-  background-image="media/nr-amrex-fade.png" background-size="contain"
-  background-position="right"}
