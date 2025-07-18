@@ -6,12 +6,12 @@
 <script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="slides_files/libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="slides_files/libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="slides_files/libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
 <link href="slides_files/libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+  <meta name="generator" content="quarto-1.7.32">
 
   <title>GRChombo and GRTeclyn</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -155,7 +155,8 @@ Miren Radia
 <li>Written in C++14</li>
 <li>Explicit vectorization through C++ templates to achieve good performance</li>
 <li>Hybrid MPI + OpenMP parallelization</li>
-<li>Intended for more exotic problems than most other NR codes:
+<li>Project started in ~2012 with code becoming open source in 2018.</li>
+<li>Intended for more exotic problems than some other NR codes:
 <ul>
 <li>Cosmology: Inflation, cosmic strings, etc.</li>
 <li>Boson stars/oscillatons/axion stars</li>
@@ -178,10 +179,9 @@ Miren Radia
 <li>“Teclyn” is Welsh for “tool”.</li>
 <li>Features:
 <ul>
-<li>Built on the <a href="https://amrex-codes.github.io/amrex/">AMReX</a> framework for block-structured AMR.</li>
+<li>Built on the <a href="https://amrex-codes.github.io/amrex/">AMReX</a> framework for block-structured AMR with good GPU support.</li>
 <li>Higher-order spatial interpolation between coarser and finer levels than GRChombo.</li>
 <li>Black-hole binary evolution</li>
-<li>Designed to be flexible and easy to adapt to new problems</li>
 <li>Familiar structure for existing GRChombo users</li>
 <li>Tested and runs well on Nvidia, AMD and Intel GPUs</li>
 </ul></li>
@@ -226,6 +226,68 @@ Miren Radia
 </ul>
 </div></div>
 </section>
+<section id="coding-paradigms" class="slide level2 smaller">
+<h2>Coding paradigms</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Simple structure in modern C++ that is easy to adapt to new problems.
+<ul>
+<li>We inherit this from Chombo/AMReX (both very similar).</li>
+</ul></li>
+<li>No complicated code-generation procedures
+<ul>
+<li>Easier to debug and/or modify</li>
+</ul></li>
+<li>Low number of dependencies
+<ul>
+<li>Easier to set up/simplifies portability</li>
+</ul></li>
+<li>Performance optimization e.g.:
+<ul>
+<li>GRChombo: Explicit vector intrinsics instead of relying on compiler auto-vectorization</li>
+<li>GRTeclyn: No GPU managed memory to keep data GPU-resident and avoid unnecessary transfers</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<!-- ![](media/code.svg){height="150"} -->
+<p><img data-src="media/debugging.png" style="width:100.0%"></p>
+<!-- ![](media/dependencies.svg){width="150"} -->
+</div></div>
+</section>
+<section id="challenges-and-solutions" class="slide level2 smaller">
+<h2>Challenges and solutions</h2>
+<h3 id="shorter-term">Shorter term</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="challenges">Challenges</h4>
+<ul>
+<li>Transitioning GRChombo users to GRTeclyn</li>
+<li>Training research users how to modify/develop/run in a GPU-performant way</li>
+<li>Improving scientific productivity (time and computational resources)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 id="solutions">Solutions</h4>
+<ul>
+<li>Training/group hackathons</li>
+<li>Better documentation</li>
+<li>Collaborate with other codes on developing shared tools</li>
+</ul>
+</div></div>
+<h3 id="longer-term">Longer term</h3>
+<ul>
+<li>Future GPU performance is only really improving in lower precision floating point datatypes (e.g.&nbsp;32 bit, 16 bit, 8 bit and even lower).
+<ul>
+<li>Like everyone else we currently use FP64 (double precision) everywhere.</li>
+<li>We will need <em>more</em> accuracy for future GW detectors, not less!</li>
+</ul></li>
+</ul>
+</section>
+<section>
+<section id="any-questions" class="title-slide slide level1 center" data-background-color="#40666e" data-background-image="media/nr-amrex-fade.png" data-background-size="contain" data-background-position="right">
+<h1>Any questions?</h1>
+
+</section>
 <section id="why-amrex" class="slide level2 smaller">
 <h2>Why <a href="https://amrex-codes.github.io/">AMReX</a>?</h2>
 <ul>
@@ -255,9 +317,6 @@ Miren Radia
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Both Chombo and AMReX originated from the same BoxLib software so APIs are very similar.</p></li></ol></aside></section>
-<section id="any-questions" class="title-slide slide level1 center" data-background-color="#40666e" data-background-image="media/nr-amrex-fade.png" data-background-size="contain" data-background-position="right">
-<h1>Any questions?</h1>
 
 <div class="reveal-header">
 <div class="header-logo">
@@ -273,8 +332,7 @@ Miren Radia
 <p> </p>
 </div>
 </div>
-</section>
-
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Both Chombo and AMReX originated from the same BoxLib software so APIs are very similar.</p></li></ol></aside></section></section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
